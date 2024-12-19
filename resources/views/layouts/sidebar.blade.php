@@ -12,16 +12,16 @@
         </a>
     </li>
     <li>
-        <a href="{{ route('admin.blogs.index') }}">
+        <a href="{{ route('admin.notes.index') }}">
             <i class="fas fa-blog font-size-18"></i>
-            <span data-key="t-{{ __('system.blogs.menu') }}">{{ __('system.blogs.menu') }}</span>
+            <span data-key="t-{{ __('system.notes.menu') }}">{{ __('system.notes.menu') }}</span>
         </a>
     </li>
 
 {{--    <li>--}}
-{{--        <a href="{{ route('admin.blogs.comments') }}">--}}
+{{--        <a href="{{ route('admin.notes.comments') }}">--}}
 {{--            <i class="fas fa-comment-alt font-size-18"></i>--}}
-{{--            <span data-key="t-{{ __('system.blogs.menu') }}">{{ __('system.fields.comments') }}</span>--}}
+{{--            <span data-key="t-{{ __('system.notes.menu') }}">{{ __('system.fields.comments') }}</span>--}}
 {{--        </a>--}}
 {{--    </li>--}}
 

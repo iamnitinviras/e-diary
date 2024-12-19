@@ -22,22 +22,22 @@ class NotesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:show blogs')->only('index','show');
-        $this->middleware('permission:add blogs')->only('create','store');
-        $this->middleware('permission:edit blogs')->only('edit','update');
-        $this->middleware('permission:delete blogs')->only('destroy');
+        $this->middleware('permission:show notes')->only('index','show');
+        $this->middleware('permission:add notes')->only('create','store');
+        $this->middleware('permission:edit notes')->only('edit','update');
+        $this->middleware('permission:delete notes')->only('destroy');
     }
     public function index()
     {
         $request = request();
         $params = $request->only('par_page', 'sort', 'direction', 'filter');
-        $blogs = (new NotesRepository())->getBlogs($params);
-        return view('admin.blogs.index', ['blogs' => $blogs]);
+        $notes = (new NotesRepository())->getBlogs($params);
+        return view('admin.notes.index', ['notes' => $notes]);
     }
     public function create()
     {
         $categories=Category::where('status','active')->orderBy('category_name','asc')->get();
-        return view('admin.blogs.create',compact('categories'));
+        return view('admin.notes.create',compact('categories'));
     }
 
     public function store(No $request)
@@ -49,19 +49,19 @@ class NotesController extends Controller
             $input['created_by']=$user->id;
             Notes::create($input);
             DB::commit();
-            $request->session()->flash('Success', __('system.messages.saved', ['model' => __('system.blogs.title')]));
+            $request->session()->flash('Success', __('system.messages.saved', ['model' => __('system.notes.title')]));
         } catch (\Exception $ex) {
             DB::rollback();
             $request->session()->flash('Error',$ex->getMessage());
             return redirect()->back();
         }
-        return redirect()->route('admin.blogs.index');
+        return redirect()->route('admin.notes.index');
     }
 
     public function edit(Blogs $blog)
     {
         $categories=Category::where('status','active')->orderBy('category_name','asc')->get();
-        return view('admin.blogs.edit', ['blog' => $blog,'categories'=>$categories]);
+        return view('admin.notes.edit', ['blog' => $blog,'categories'=>$categories]);
     }
 
     public function update(NotesRequest $request, Notes $blog)
@@ -69,21 +69,21 @@ class NotesController extends Controller
         $input = $request->only('title','description','image','status','slug','read_time','category_id','seo_keyword','seo_description','lang_title','lang_description');
         $blog->fill($input)->save();
 
-        $request->session()->flash('Success', __('system.messages.updated', ['model' => __('system.blogs.title')]));
+        $request->session()->flash('Success', __('system.messages.updated', ['model' => __('system.notes.title')]));
         if ($request->back) {
             return redirect($request->back);
         }
-        return redirect(route('admin.blogs.index'));
+        return redirect(route('admin.notes.index'));
     }
 
     public function destroy(Blogs $blog)
     {
         $request = request();
         $blog->delete();
-        $request->session()->flash('Success', __('system.messages.deleted', ['model' => __('system.blogs.title')]));
+        $request->session()->flash('Success', __('system.messages.deleted', ['model' => __('system.notes.title')]));
         if ($request->back) {
             return redirect($request->back);
         }
-        return redirect(route('admin.blogs.index'));
+        return redirect(route('admin.notes.index'));
     }
 }

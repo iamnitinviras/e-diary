@@ -6,6 +6,7 @@ use App\Models\Blogs;
 use App\Models\Category;
 use App\Models\Comments;
 use App\Models\ContactUs;
+use App\Models\Notes;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Response;
@@ -40,8 +41,7 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $count['total_categories'] = Category::count();
-        $count['total_blogs'] = Blogs::count();
-        $count['total_comments'] = Comments::count();
+        $count['total_notes'] = Notes::count();
         $count['total_contact_request'] = ContactUs::count();
 
         return view('home', $count);

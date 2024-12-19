@@ -147,7 +147,7 @@ return
             'title' => 'Dashboard',
             'menu' => 'Dashboard',
             'total_categories' => 'Total Categories',
-            'total_blogs' => 'Total Blogs',
+            'total_notes' => 'Total Blogs',
             'total_comments' => 'Total Comments',
             'cancel' => 'Cancel operation',
             'missing_address' => 'Your address details are missing.',
@@ -297,7 +297,7 @@ return
                 'previous' => '« Previous',
                 'next' => 'Next »',
             ),
-        'blogs' =>
+        'notes' =>
             array(
                 'menu' => 'Notes',
                 'total_views' => 'Total Views',

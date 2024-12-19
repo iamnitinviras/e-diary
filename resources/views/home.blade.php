@@ -98,29 +98,12 @@
         <div class="col-xl-3 col-md-6">
             <div class="card card-h-100">
                 <div class="card-body">
-                    <a href="{{ route('admin.blogs.index') }}">
+                    <a href="{{ route('admin.notes.index') }}">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <span class="text-muted mb-3 lh-1 d-block text-truncate">{{ __('system.dashboard.total_blogs') }}</span>
+                                <span class="text-muted mb-3 lh-1 d-block text-truncate">{{ __('system.dashboard.total_notes') }}</span>
                                 <h4 class="mb-3">
-                                    <span class="counter-value" data-target="{{ $total_blogs ?? 0 }}">{{$total_blogs}}</span>
-                                </h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6">
-            <div class="card card-h-100">
-                <div class="card-body">
-                    <a href="{{ route('admin.blogs.comments') }}">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <span class="text-muted mb-3 lh-1 d-block text-truncate">{{ __('system.dashboard.total_comments') }}</span>
-                                <h4 class="mb-3">
-                                    <span class="counter-value" data-target="{{ $total_comments ?? 0 }}">{{$total_comments}}</span>
+                                    <span class="counter-value" data-target="{{ $total_notes ?? 0 }}">{{$total_notes}}</span>
                                 </h4>
                             </div>
                         </div>

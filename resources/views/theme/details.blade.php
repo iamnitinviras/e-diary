@@ -29,7 +29,7 @@
                                             <span class="post-date">
                                                 <i class="jli-pen"></i>{{$blog->created_at}}</span>
                                             <span class="post-read-time">
-                                                <i class="jli-watch-2"></i>{{$blog->read_time}} {{trans('system.blogs.minutes_read')}}</span>
+                                                <i class="jli-watch-2"></i>{{$blog->read_time}} {{trans('system.notes.minutes_read')}}</span>
                                             <span class="meta-comment">
                                                 <i class="jli-comments"></i>
                                                 <a href="#respond">0 Comment</a>

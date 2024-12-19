@@ -15,11 +15,6 @@
                             @sortablelink('status', __('system.fields.status'), [], ['class' => 'w-100 text-gray'])
                         </div>
                     </th>
-                    <th scope="col">
-                        <div class="d-flex justify-content-between w-150px">
-                            @sortablelink('show_in_menu', __('system.categories.show_in_menu'), [], ['class' => 'w-100 text-gray'])
-                        </div>
-                    </th>
                     <th class="h-mw-80px">{{ __('system.crud.action') }}</th>
                 </tr>
                 </thead>
@@ -29,7 +24,6 @@
                         <td>{{ $category->lang_name }}</td>
 
                         <td>{!! displayStatus($category->status) !!}</td>
-                        <td>{!! displayMenuStatus($category->show_in_menu) !!}</td>
 
                         <td>
                             @can('delete categories')
@@ -57,7 +51,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="text-center">
+                        <td colspan="3" class="text-center">
                             {{ __('system.crud.data_not_found', ['table' => __('system.categories.menu')]) }}
                         </td>
                     </tr>

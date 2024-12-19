@@ -26,16 +26,12 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'category_image' => ['nullable', 'max:50000', "image", 'mimes:jpeg,png,jpg,gif,svg'],
-            'slug' => ['required','unique:categories,slug'],
             'category_name' => ['required','unique:categories,category_name'],
             'status' => ['required'],
-            'show_in_menu' => ['required'],
         ];
 
         if (isset($this->category)){
             $rules['category_name'] = ['required','unique:categories,category_name,' . $this->category->id];
-            $rules['slug'] = ['required','unique:categories,slug,' . $this->category->id];
         }
         return $rules;
     }

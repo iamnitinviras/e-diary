@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c4ed3fd7934df3056c978fabb5655f8",
+    "content-hash": "2634b140bb0643a9a17c866b918bee28",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -1120,22 +1120,21 @@
         },
         {
             "name": "iamnitinviras/laravel-installer",
-            "version": "dev-main",
+            "version": "1.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iamnitinviras/laravel-installer.git",
-                "reference": "35ece2271dce06b30b13c00520aa38e0680a7e5c"
+                "reference": "b7e76c1d4500bec1ca2fe979fcae47963542d95a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iamnitinviras/laravel-installer/zipball/35ece2271dce06b30b13c00520aa38e0680a7e5c",
-                "reference": "35ece2271dce06b30b13c00520aa38e0680a7e5c",
+                "url": "https://api.github.com/repos/iamnitinviras/laravel-installer/zipball/b7e76c1d4500bec1ca2fe979fcae47963542d95a",
+                "reference": "b7e76c1d4500bec1ca2fe979fcae47963542d95a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -1165,9 +1164,9 @@
             "description": "Laravel web installer",
             "support": {
                 "issues": "https://github.com/iamnitinviras/laravel-installer/issues",
-                "source": "https://github.com/iamnitinviras/laravel-installer/tree/main"
+                "source": "https://github.com/iamnitinviras/laravel-installer/tree/1.0"
             },
-            "time": "2024-12-18T13:12:22+00:00"
+            "time": "2024-12-19T06:48:22+00:00"
         },
         {
             "name": "jackiedo/dotenv-editor",

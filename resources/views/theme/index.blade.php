@@ -7,7 +7,7 @@
         <section class="home_section2">
             <div class="container">
                 <div class="row">
-                    @if(isset($blogs) && count($blogs)>0)
+                    @if(isset($notes) && count($notes)>0)
                         <div class="col-md-12">
                             <div id="blockid_72be465" class="block-section lara-main-block"
                                  data-blockid="blockid_72be465" data-name="lara_mgrid"
@@ -15,7 +15,7 @@
                                  data-order="date_post" data-posts_per_page="6" data-offset="5">
                                 <div class="lara_grid_wrap_f lara_clear_at g_3col">
                                     <div id="blog_parent_div" class="lara-roww content-inner lara-col3 lara-col-row">
-                                        @foreach($blogs as $blog)
+                                        @foreach($notes as $blog)
                                             <div class="lara-grid-cols">
                                                 <div class="p-wraper post-2959">
                                                     <div class="lara_grid_w">
@@ -40,7 +40,7 @@
                                                                     <i class="jli-pen"></i>{{$blog->created_at}}
                                                                 </span>
                                                                 <span class="post-read-time">
-                                                                    <i class="jli-watch-2"></i>{{$blog->read_time}} {{trans('system.blogs.minutes_read')}}
+                                                                    <i class="jli-watch-2"></i>{{$blog->read_time}} {{trans('system.notes.minutes_read')}}
                                                                 </span>
                                                             </span>
                                                         </div>
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if($total_blogs>config('app.per_page'))
+                        @if($total_notes>config('app.per_page'))
                             <div class="lara_lmore_wrap mb-5" id="load_more_button">
                                 <div class="lara_lmore_c">
                                     <a id="load-more-data" data-url="{{url('?search='.request()->search)}}" href="javascript:void(0)" class="lara-load-link">

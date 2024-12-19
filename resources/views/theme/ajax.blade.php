@@ -1,4 +1,4 @@
-@foreach($blogs as $blog)
+@foreach($notes as $blog)
     <div class="lara-grid-cols">
         <div class="p-wraper post-2959">
             <div class="lara_grid_w">
@@ -23,7 +23,7 @@
                             <i class="jli-pen"></i>{{$blog->created_at}}
                         </span>
                         <span class="post-read-time">
-                            <i class="jli-watch-2"></i>{{$blog->read_time}} {{trans('system.blogs.minutes_read')}}
+                            <i class="jli-watch-2"></i>{{$blog->read_time}} {{trans('system.notes.minutes_read')}}
                         </span>
                     </span>
                 </div>

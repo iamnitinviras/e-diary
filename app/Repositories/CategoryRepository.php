@@ -35,11 +35,9 @@ class CategoryRepository extends BaseRepository
             });
         })->select(
             "$table.id",
-            "$table.show_in_menu",
             "$table.category_name",
             "$table.category_image",
             "$table.lang_category_name",
-            "$table.sort_order",
             "$table.created_at",
             "$table.status",
         )->get();

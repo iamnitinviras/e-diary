@@ -21,7 +21,7 @@ class FrontController extends Controller
 {
     public function index(){
         $search=trim(request()->search);
-        $blogs=Blogs::with('category')
+        $notes=Blogs::with('category')
             ->where('status','published')
             ->when($search,function ($query) use ($search){
                 if (isset($search) && $search!=null){
@@ -31,16 +31,16 @@ class FrontController extends Controller
             ->orderBy('id','desc')
             ->paginate(config('app.per_page'));
 
-        $total_blogs=$blogs->total()??0;
+        $total_notes=$notes->total()??0;
 
         if (request()->ajax()) {
-            $view = view('theme.ajax', compact('blogs','total_blogs'))->render();
+            $view = view('theme.ajax', compact('notes','total_notes'))->render();
             return response()->json([
                 'html' => $view,
             ]);
         }
 
-        return view('theme.index',compact('blogs','total_blogs'));
+        return view('theme.index',compact('notes','total_notes'));
     }
 
     public function details($slug){
@@ -63,7 +63,7 @@ class FrontController extends Controller
         if ($category==null){
             return redirect('/');
         }
-        $blogs=Blogs::with('category')
+        $notes=Blogs::with('category')
             ->where('category_id',$category->id)
             ->orderBy('id','desc')
             ->get();
@@ -75,18 +75,18 @@ class FrontController extends Controller
             ->orderBy('id','desc')->limit(5)
             ->get();
 
-        return view('theme.category',compact('blogs','category','sidebarCategory','sidebarBlogs'));
+        return view('theme.category',compact('notes','category','sidebarCategory','sidebarBlogs'));
     }
     public function search(Blogs $blog){
         return view('theme.search',compact('blog'));
     }
     public function allBlogs(Blogs $blog){
-        $blogs=Blogs::with('category')->where('status','published')->orderBy('id','desc')->get();
-        return view('theme.all',compact('blogs'));
+        $notes=Blogs::with('category')->where('status','published')->orderBy('id','desc')->get();
+        return view('theme.all',compact('notes'));
     }
 
     public static function getCategoriesForFooter(){
-        return Category::whereHas('blogs')->select('id','category_name','slug')->limit(8)->orderBy('category_name','asc')->get();
+        return Category::whereHas('notes')->select('id','category_name','slug')->limit(8)->orderBy('category_name','asc')->get();
     }
 
     public static function getMoreFromUsForFooter(){

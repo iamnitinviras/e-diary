@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.2",
         "anhskohbo/no-captcha": "^3.6",
-        "iamnitinviras/laravel-installer": "dev-main",
+        "iamnitinviras/laravel-installer": "1.0.x-dev",
         "jackiedo/dotenv-editor": "^1.1",
         "jason-guru/laravel-make-repository": "^0.0.3",
         "kyslik/column-sortable": "^6.6",

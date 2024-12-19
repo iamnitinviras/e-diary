@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Traits\SubscriptionTrait;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Searchable\Searchable;
 use Kyslik\ColumnSortable\Sortable;
@@ -15,7 +14,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements Searchable, MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, Sortable, SubscriptionTrait;
+    use HasApiTokens, HasFactory, Notifiable, Sortable;
     use HasRoles;
 
     protected $table = 'users';

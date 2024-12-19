@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('system.blogs.update.menu'))
+@section('title', __('system.notes.update.menu'))
 @section('content')
     <div class="row">
 
@@ -9,20 +9,20 @@
 
                     <div class="row">
                         <div class="col-mb-8 col-xl-8">
-                            <h4 class="card-title">{{ __('system.blogs.update.menu') }}</h4>
+                            <h4 class="card-title">{{ __('system.notes.update.menu') }}</h4>
                             <div class="page-title-box pb-0 d-sm-flex">
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('system.dashboard.menu') }}</a></li>
-                                        <li class="breadcrumb-item "><a href="{{ route('admin.blogs.index') }}">{{ __('system.blogs.menu') }}</a></li>
-                                        <li class="breadcrumb-item active">{{ __('system.blogs.update.menu') }}</li>
+                                        <li class="breadcrumb-item "><a href="{{ route('admin.notes.index') }}">{{ __('system.notes.menu') }}</a></li>
+                                        <li class="breadcrumb-item active">{{ __('system.notes.update.menu') }}</li>
                                     </ol>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {!! html()->modelForm($blog,'PUT',  route('admin.blogs.update', $blog->id))
+                {!! html()->modelForm($blog,'PUT',  route('admin.notes.update', $blog->id))
                  ->id('pristine-valid')
                  ->attribute('enctype', 'multipart/form-data')
                  ->open() !!}
@@ -33,7 +33,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                @include('admin.blogs.fields', ['edit' => true])
+                                @include('admin.notes.fields', ['edit' => true])
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-12 mt-3">
                                 <button class="btn btn-primary" type="submit">{{ __('system.crud.save') }}</button>
-                                <a href="{{ route('admin.blogs.index') }}"class="btn btn-secondary">{{ __('system.crud.back') }}</a>
+                                <a href="{{ route('admin.notes.index') }}"class="btn btn-secondary">{{ __('system.crud.back') }}</a>
                             </div>
                         </div>
                     </div>

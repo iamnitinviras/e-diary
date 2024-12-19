@@ -15,7 +15,6 @@ return new class extends Migration {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('category_name', 150);
-            $table->string('slug', 150)->unique();
             $table->string('category_icon', 150)->default('fas fa-list');
             $table->json('lang_category_name')->nullable();
             $table->longText('description')->nullable();
@@ -23,7 +22,6 @@ return new class extends Migration {
             $table->string('category_image', 150)->nullable();
             $table->enum('status', ['active', 'inactive', 'deleted'])->default('active');
             $table->unsignedBigInteger('sort_order')->default(1);
-            $table->boolean('show_in_menu')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

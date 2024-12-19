@@ -100,7 +100,7 @@ class Category extends Model implements Searchable
             $url
         );
     }
-    public function blogs(){
+    public function notes(){
         return $this->hasMany(Blogs::class,'category_id','id');
     }
 }

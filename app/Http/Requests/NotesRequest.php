@@ -26,11 +26,11 @@ class NotesRequest extends FormRequest
         $rules = [
             'category_id' => ['required'],
             'title' => ['required', 'string', 'max:255', 'min:2'],
-            'slug' => ['required','unique:blogs,slug'],
+            'slug' => ['required','unique:notes,slug'],
             'description' => ['required'],
         ];
         if (isset($this->blog)){
-            $rules['slug'] = ['required','unique:blogs,slug,' . $this->blog->id];
+            $rules['slug'] = ['required','unique:notes,slug,' . $this->blog->id];
         }
         return $rules;
     }

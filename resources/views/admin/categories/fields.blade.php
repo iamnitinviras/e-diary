@@ -9,34 +9,12 @@
             ->id('category_name')
             ->attribute('autocomplete', 'off')
             ->attribute('placeholder', $lbl_category_name)
-            ->attribute('onkeypress','createSlug(this)')
-            ->attribute('onblur','createSlug(this)')
             ->required()
             ->maxlength(150)
             ->minlength(2)
             ->attribute('data-pristine-required-message', __('validation.required', ['attribute' => strtolower($lbl_category_name)]))
             ->attribute('data-pristine-minlength-message', __('validation.custom.invalid', ['attribute' => strtolower($lbl_category_name)])) !!}
             @error('category_name')
-            <div class="pristine-error text-help">{{ $message }}</div>
-            @enderror
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="mb-3 form-group  @error('slug') has-danger @enderror">
-            @php($lbl_category_slug = __('system.fields.category_slug'))
-            <label for="input-slug">{{ $lbl_category_slug }} <span class="text-danger">*</span></label>
-            {!! html()->text('slug')
-            ->class('form-control')
-            ->id('input-slug')
-            ->attribute('autocomplete', 'off')
-            ->attribute('placeholder', $lbl_category_slug)
-            ->attribute('onkeypress','createSlug(this)')
-            ->attribute('onblur','createSlug(this)')
-            ->required()
-            ->minlength(3)
-            ->attribute('data-pristine-required-message', __('validation.required', ['attribute' => strtolower($lbl_category_slug)]))
-            ->attribute('data-pristine-minlength-message', __('validation.custom.invalid', ['attribute' => strtolower($lbl_category_slug)])) !!}
-            @error('slug')
             <div class="pristine-error text-help">{{ $message }}</div>
             @enderror
         </div>
@@ -109,20 +87,6 @@
     </div>
 @endforeach
 <div class="row">
-    <div class="col-md-4">
-        @php($show_in_menu=$category->show_in_menu??0)
-        <div class="mb-3 form-group @error('show_in_menu') has-danger @enderror  @error('show_in_menu') has-danger @enderror">
-            <label class="form-label w-100" for="name">{{trans('system.categories.show_in_menu')}}</label>
-            <div class="form-check form-check-inline">
-                <input @if($show_in_menu==1) checked @endif class="form-check-input" type="radio" name="show_in_menu" id="show_in_menu_yes" value="1">
-                <label class="form-check-label" for="show_in_menu_yes">{{trans('system.crud.yes')}}</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input @if($show_in_menu==0) checked @endif class="form-check-input" type="radio" name="show_in_menu" id="show_in_menu_no" value="0">
-                <label class="form-check-label" for="show_in_menu_no">{{trans('system.crud.no')}}</label>
-            </div>
-        </div>
-    </div>
     <div class="col-md-4">
         @php($status=$category->status??'active')
         <div class="mb-3 form-group @error('status') has-danger @enderror  @error('status') has-danger @enderror">

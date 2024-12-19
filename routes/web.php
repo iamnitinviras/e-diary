@@ -38,10 +38,8 @@ Route::get('default/theme', [App\Http\Controllers\FrontController::class, 'defau
     Route::get('/verify-email', [App\Http\Controllers\HomeController::class, 'verifyEmail'])->name('verifyEmail')->middleware(['auth']);
     Route::post('/editor/image-upload', [App\Http\Controllers\HomeController::class, 'editorImageUpload']);
     Route::group(['middleware' => ["auth"], 'as' => "admin."], function () {
-        Route::delete('comments/{comment}', [App\Http\Controllers\Admin\BlogController::class, 'commentsDestroy'])->name('comment.destroy');
-        Route::get('comments', [App\Http\Controllers\Admin\BlogController::class, 'comments'])->name('blogs.comments');
-        Route::post('comments/{comment}', [App\Http\Controllers\Admin\BlogController::class, 'commentsApprove'])->name('blogs.comments.update');
-        Route::resource('blogs', App\Http\Controllers\Admin\BlogController::class);
+
+        Route::resource('notes', App\Http\Controllers\Admin\NotesController::class);
         Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);
         Route::resource('cms-page', App\Http\Controllers\Admin\CmsPageController::class)->middleware('role:Super-Admin');
         Route::resource('contact-request', App\Http\Controllers\Admin\ContactUsController::class)->middleware('role:Super-Admin');

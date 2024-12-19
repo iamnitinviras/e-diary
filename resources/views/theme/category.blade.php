@@ -14,8 +14,8 @@
                     <div class="lara_wrapper_cat">
                         <div id="content_masonry"
                              class="lara_cgrid pagination_infinite_style_cat load_more_main_wrapper">
-                            @if(isset($blogs) && count($blogs)>0)
-                                @foreach($blogs as $blog)
+                            @if(isset($notes) && count($notes)>0)
+                                @foreach($notes as $blog)
                                     <div
                                         class="box lara_grid_layout1 blog_grid_post_style post-2955 post type-post status-publish format-quote has-post-thumbnail hentry category-active tag-morning tag-shooting post_format-post-format-quote">
                                         <div class="lara_grid_w">
@@ -46,7 +46,7 @@
                                                         <i class="jli-pen"></i>{{$blog->created_at}}
                                                     </span>
                                                     <span class="post-read-time">
-                                                        <i class="jli-watch-2"></i>{{$blog->read_time}} {{trans('system.blogs.minutes_read')}}
+                                                        <i class="jli-watch-2"></i>{{$blog->read_time}} {{trans('system.notes.minutes_read')}}
                                                     </span>
                                                 </span>
                                             </div>

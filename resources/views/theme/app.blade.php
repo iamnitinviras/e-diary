@@ -408,7 +408,7 @@
                                                             <a class="category_image_link" id="category_color_2" href="{{route('blog.category',['slug'=>$menuCat->slug])}}"></a>
                                                             <span class="lara_cm_overlay">
                                                                 <span class="lara_cm_name">{{$actCategory->lang_name}}</span>
-                                                                <span class="lara_cm_count">{{$actCategory->blogs->count()}} {{trans('system.fields.posts')}}</span>
+                                                                <span class="lara_cm_count">{{$actCategory->notes->count()}} {{trans('system.fields.posts')}}</span>
                                                             </span>
                                                         </div>
                                                     </div>

@@ -41,13 +41,13 @@ class CategoryController extends Controller
     {
         try {
             DB::beginTransaction();
-            $input = $request->only('category_name','slug', 'description','show_in_menu', 'category_image', 'lang_category_name','lang_description','status');
+            $input = $request->only('category_name', 'description','status');
             $input['sort_order'] = Category::max('sort_order') + 1;
             Category::create($input);
             DB::commit();
             $request->session()->flash('Success', __('system.messages.saved', ['model' => __('system.categories.title')]));
         } catch (\Exception $ex) {
-            dd($ex);
+            dd($ex->getMessage());
             DB::rollback();
             $request->session()->flash('Error', __('system.messages.operation_rejected'));
             return redirect()->back();
@@ -62,7 +62,7 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $request, Category $category)
     {
-        $input = $request->only('category_name','slug', 'category_image','show_in_menu','description','lang_category_name','lang_description','status');
+        $input = $request->only('category_name', 'description','status');
         $category->fill($input)->save();
 
         $request->session()->flash('Success', __('system.messages.updated', ['model' => __('system.categories.title')]));

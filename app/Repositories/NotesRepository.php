@@ -1,11 +1,7 @@
 <?php
 
 namespace App\Repositories;
-
-use App\Models\Blogs;
-use App\Models\Category;
-use App\Models\City;
-use App\Models\News;
+use App\Models\Notes;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 
 
@@ -20,10 +16,10 @@ class NotesRepository extends BaseRepository
      */
     public function model()
     {
-        return Blogs::class;
+        return Notes::class;
     }
 
-    public function getNewsQuery($params)
+    public function getQuery($params)
     {
         return $this->model;
     }
@@ -32,7 +28,7 @@ class NotesRepository extends BaseRepository
     {
 
         $table = $this->model->getTable();
-        $restaurants = $this->getNewsQuery($params)->with('category')->sortable(['id' => 'desc'])->when(isset($params['filter']), function ($q) use ($params, $table) {
+        $restaurants = $this->getQuery($params)->with('category')->sortable(['id' => 'desc'])->when(isset($params['filter']), function ($q) use ($params, $table) {
             $q->where(function ($query) use ($params, $table) {
                 $query->where("$table.title", 'like', '%' . $params['filter'] . '%');
                 $query->orWhere("$table.id", '=',  $params['filter']);
