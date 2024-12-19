@@ -19,45 +19,36 @@
                         @sortablelink('status', __('system.fields.status'), [], ['class' => 'text-gray'])
                     </div>
                 </th>
-
-                <th scope="col">
-                    <div class="d-flex justify-content-between">
-                        @sortablelink('total_views', __('system.notes.total_views'), [], ['class' => 'text-gray'])
-                    </div>
-                </th>
                 <th class="h-mw-80px">{{ __('system.crud.action') }}</th>
             </tr>
             </thead>
             <tbody>
-            @forelse ($notes as $blog)
+            @forelse ($notes as $note)
                 <tr>
                     <td>
-                        <p class="text-body mb-0">{{ $blog->local_title }}</p>
-                        <p class="mb-0 badge bg-success">{{ $blog->read_time }} {{trans('system.notes.minutes_read')}}</p>
+                        {{ $note->title }}
                     </td>
 
                     <td>
-                        <span class="text-body">{{ $blog->category->lang_name }}</span>
+                        <span class="text-body">{{ $note->category->lang_name }}</span>
                     </td>
                     <td>
-                        {!! displayBlogStatus($blog->status) !!}
+                        {!! displayBlogStatus($note->status) !!}
                     </td>
-                    <td>
-                        <span class="text-body">{{ $blog->total_views }}</span>
-                    </td>
+
                     <td>
                         @can('delete notes')
-                            {!! html()->form('delete', route('admin.notes.destroy', ['blog' => $blog->id]))
+                            {!! html()->form('delete', route('admin.notes.destroy', ['note' => $note->id]))
                                 ->class('data-confirm')
                                 ->attribute('autocomplete', 'off')
                                 ->attribute('data-confirm-message', __('system.fields.are_you_sure'))
                                 ->attribute('data-confirm-title', __('system.crud.delete'))
-                                ->id('delete-form_' . $blog->id)->open() !!}
+                                ->id('delete-form_' . $note->id)->open() !!}
                         @endcan
 
                         <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             @can('edit notes')
-                                <a role="button" href="{{ route('admin.notes.edit', ['blog' => $blog->id]) }}" class="btn btn-success">{{ __('system.crud.edit') }}</a>
+                                <a role="button" href="{{ route('admin.notes.edit', ['note' => $note->id]) }}" class="btn btn-success">{{ __('system.crud.edit') }}</a>
                             @endcan
 
                             @can('delete notes')
@@ -72,7 +63,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5" class="text-center">
+                    <td colspan="4" class="text-center">
                         {{ __('system.crud.data_not_found', ['table' => __('system.notes.title')]) }}
                     </td>
                 </tr>

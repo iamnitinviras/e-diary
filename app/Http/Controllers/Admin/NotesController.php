@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Laravel\Prompts\Note;
 
 class NotesController extends Controller
 {
@@ -40,12 +41,12 @@ class NotesController extends Controller
         return view('admin.notes.create',compact('categories'));
     }
 
-    public function store(No $request)
+    public function store(NotesRequest $request)
     {
         $user = auth()->user();
         try {
             DB::beginTransaction();
-            $input = $request->only('title','description','slug','image','status','read_time','category_id','seo_keyword','seo_description','lang_title','lang_description');
+            $input = $request->only('title','description','status','category_id');
             $input['created_by']=$user->id;
             Notes::create($input);
             DB::commit();
@@ -58,16 +59,16 @@ class NotesController extends Controller
         return redirect()->route('admin.notes.index');
     }
 
-    public function edit(Blogs $blog)
+    public function edit(Notes $note)
     {
         $categories=Category::where('status','active')->orderBy('category_name','asc')->get();
-        return view('admin.notes.edit', ['blog' => $blog,'categories'=>$categories]);
+        return view('admin.notes.edit', ['blog' => $note,'categories'=>$categories]);
     }
 
-    public function update(NotesRequest $request, Notes $blog)
+    public function update(NotesRequest $request, Notes $note)
     {
-        $input = $request->only('title','description','image','status','slug','read_time','category_id','seo_keyword','seo_description','lang_title','lang_description');
-        $blog->fill($input)->save();
+        $input = $request->only('title','description','status','category_id');
+        $note->fill($input)->save();
 
         $request->session()->flash('Success', __('system.messages.updated', ['model' => __('system.notes.title')]));
         if ($request->back) {
@@ -76,10 +77,10 @@ class NotesController extends Controller
         return redirect(route('admin.notes.index'));
     }
 
-    public function destroy(Blogs $blog)
+    public function destroy(Blogs $note)
     {
         $request = request();
-        $blog->delete();
+        $note->delete();
         $request->session()->flash('Success', __('system.messages.deleted', ['model' => __('system.notes.title')]));
         if ($request->back) {
             return redirect($request->back);
