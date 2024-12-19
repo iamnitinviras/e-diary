@@ -52,21 +52,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-
-            <div class="col-lg-6 mb-2">
-                <div class="form-group">
-                    <label class="text-label">{{ trans('system.frontend.footer_text') }} <span class="text-danger">*</span></label>
-                    <textarea rows="5" data-pristine-required-message="{{__('validation.required', ['attribute' => strtolower(trans('system.frontend.footer_text'))])}}" type="text" name="footer_text" class="form-control" placeholder="{{ trans('system.frontend.footer_text') }}">{{ old('footer_text',config('app.footer_text')) }}</textarea>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-2">
-                <div class="form-group">
-                    <label class="text-label">{{ trans('system.frontend.about_author') }} <span class="text-danger">*</span></label>
-                    <textarea rows="5" data-pristine-required-message="{{__('validation.required', ['attribute' => strtolower(trans('system.frontend.about_author'))])}}" type="text" name="about_author" class="form-control" placeholder="{{ trans('system.frontend.about_author') }}">{{ old('about_author',config('app.about_author')) }}</textarea>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

@@ -46,18 +46,6 @@
                                         <span class="d-none d-sm-block">{{ __('system.dashboard.frontend') }}</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link @if(request()->route()->getName()=='admin.environment.recaptcha') active @endif" href="{{ url('environment/setting/recaptcha') }}">
-                                        <span class="d-block d-sm-none"><i class="fa fa-code"></i></span>
-                                        <span class="d-none d-sm-block">{{ __('system.environment.recaptcha') }}</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('environment/setting/seo') }}">
-                                        <span class="d-block d-sm-none"><i class="fa fa-code"></i></span>
-                                        <span class="d-none d-sm-block">{{ __('system.environment.seo') }}</span>
-                                    </a>
-                                </li>
                             </ul>
                             <form autocomplete="off" novalidate="" action="{{ route('admin.environment.setting.email.update') }}" id="pristine-valid" method="post" enctype="multipart/form-data">
                                 @method('put')
