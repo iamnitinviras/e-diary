@@ -14,24 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
  */
 Auth::routes(['register' => false]);
-Route::middleware(['preventBackHistory','installed'])->group(function () {
+Route::middleware(['preventBackHistory', 'installed'])->group(function () {
 
-Route::get('/', [\App\Http\Controllers\FrontController::class, 'index'])->name('/');
-Route::get('/register',function (){
-    return redirect('/');
-});
-Route::get('/category/{slug}', [\App\Http\Controllers\FrontController::class, 'category'])->name('blog.category');
-Route::get('/blog/{slug}', [\App\Http\Controllers\FrontController::class, 'details'])->name('blog.details');
-Route::post('/blog/{blog}/comment', [\App\Http\Controllers\FrontController::class, 'comment'])->name('blog.comment');
-Route::get('/search', [\App\Http\Controllers\FrontController::class, 'search'])->name('blog.search');
-Route::get('/all', [\App\Http\Controllers\FrontController::class, 'allBlogs'])->name('blog.all');
-Route::get('/terms-and-condition', [\App\Http\Controllers\FrontController::class, 'termsAndCondition'])->name('terms-and-condition');
-Route::get('/privacy-policy', [\App\Http\Controllers\FrontController::class, 'privacyPolicy'])->name('privacy-policy');
-Route::get('/contact-us', [\App\Http\Controllers\FrontController::class, 'contact_us'])->name('frontend.contact_us');
-Route::post('/contact-us', [\App\Http\Controllers\FrontController::class, 'contactUs'])->name('contactUs');
-Route::get('default/theme', [App\Http\Controllers\FrontController::class, 'defaultTheme'])->name('default.theme');
+    Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('/');
 
-
+    Route::get('/register', function () {
+        return redirect('/');
+    });
     Route::put('default/{language}/languages', [App\Http\Controllers\Admin\LanguageController::class, 'defaultLanguage'])->name('admin.default.language');
     Route::put('default/theme', [App\Http\Controllers\Admin\LanguageController::class, 'defaultTheme'])->name('default.theme');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['auth']);
@@ -46,7 +35,6 @@ Route::get('default/theme', [App\Http\Controllers\FrontController::class, 'defau
 
         //Manage Language
         Route::resource('languages', App\Http\Controllers\Admin\LanguageController::class, ['except' => ['show'], 'middleware' => 'role:Super-Admin']);
-
         Route::get('get-rightbar-content', [App\Http\Controllers\HomeController::class, 'getRightBarContent'])->name('getRightBarContent');
 
         //  Profile

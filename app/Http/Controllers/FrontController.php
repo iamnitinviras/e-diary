@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\CmsPage;
 use App\Models\Comments;
 use App\Models\ContactUs;
+use App\Models\Notes;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -21,7 +22,7 @@ class FrontController extends Controller
 {
     public function index(){
         $search=trim(request()->search);
-        $notes=Blogs::with('category')
+        $notes=Notes::with('category')
             ->where('status','published')
             ->when($search,function ($query) use ($search){
                 if (isset($search) && $search!=null){
