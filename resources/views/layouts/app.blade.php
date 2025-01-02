@@ -40,7 +40,7 @@
 <body data-topbar="{{ $theme }}">
 <div id="layout-wrapper">
 
-    @include('layouts.vertical')
+    @include('layouts.sidebar')
 
     <div class="main-content">
         <div class="page-content">
